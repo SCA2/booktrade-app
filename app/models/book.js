@@ -35,35 +35,16 @@ Book.statics.searchForBook = function(searchTerm, cb) {
 
   const searchOptions = {
     key     : process.env.GOOGLE_KEY,
-    // field   : 'title',
     offset  : 0,
     limit   : 1,
     type    : 'books',
-    // order   : 'relevance',
     lang    : 'en',
     country : 'US'
   };
 
   googleBooks.search(searchTerm, searchOptions, (error, books) => {
     if ( ! error ) {
-      let book = books[0];
-      model.findOneAndUpdate(
-        { 'id': book.id },
-        { $set: {
-          'id'        : book.id,
-          'title'     : book.title,
-          'authors'   : book.authors,
-          'publisher' : book.publisher,
-          'thumbnail' : book.thumbnail,
-          'link'      : book.link
-          }
-        },
-        { upsert: true, new: true },
-        (error, doc) => {
-          if(error) { console.log('mongoose error: ' + error.message) }
-          cb(doc);
-        }
-      );
+      cb(books[0]);
     } else {
       console.log(error.message);
     }
