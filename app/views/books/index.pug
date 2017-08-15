@@ -1,0 +1,23 @@
+extends ../layout/layout.pug
+
+block content
+  section.jumbotron.text-center
+    .container
+      h2.text-center Trade your books
+      p
+        if !isLoggedIn
+          a.btn.btn-primary(href='/login') Login with Twitter
+  section
+    .container
+      .row(style="display: flex; flex-wrap: wrap")
+        if books
+          each book in books
+            .col-sm-3
+              .card(style="min-height: 350px")
+                a(href='/books/' + book._id)
+                  img.card-img-top(src=book.thumbnail)
+                .card-block
+                  p.card-title=book.title
+                if book.request
+                  .card-footer.text-muted
+                    span="Request Pending"

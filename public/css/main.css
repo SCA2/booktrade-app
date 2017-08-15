@@ -1,48 +1,9 @@
-/********* Fonts **********/
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url('../fonts/Roboto-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf') format('truetype');
-}
-
-/****** Main Styling ******/
 
 body {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
+	/*font-family: 'Roboto', sans-serif;*/
+	/*font-size: 16px;*/
 	margin: 0;
-	padding: 0;
-}
-
-header {
-	color: #00BCD4;
-	height: 56px;
-	margin: 0 0 14px 0;
-	text-align: center;
-}
-
-p {
-	margin: 8px 0 0 0;
-}
-
-.container p {
-	text-align: center;
-	padding: 0;
-}
-
-/****** Header Styling ******/
-
-header p {
-	margin: 16px 0 5px 0;
+	padding-top: 5rem;
 }
 
 .menu {
@@ -112,25 +73,7 @@ img {
 	color: #FFA000;
 }
 
-/****** Click Styling ******/
-
-.btn-container {	/* Styling for the div that contains the buttons */
-	margin: -10px auto 0 auto;
-	text-align: center;
-}
-
-.btn {	/* Styling for buttons */
-	margin: 0 8px;
-	color: white;
-	background-color: #00BCD4;
-	display: inline-block;
-	border: 0;
-	font-size: 14px;
-	border-radius: 3px;
-	padding: 10px 5px;
-	width: 100px;
-	font-weight: 500;
-}
+/****** Click Styling ******
 
 .btn:focus {	/* Remove outline when hovering over button */
 	outline: none;
@@ -203,10 +146,32 @@ span {
 	margin: 0;
 }
 
-/* Single Poll Styling */
+.album {
+  min-height: 50rem; /* Can be removed; just added for demo purposes */
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+  background-color: #f7f7f7;
+}
 
-.poll-container {
-  display: flex;
-  justify-content: flex-center;
-  align-items: center;
+.jumbotron {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+.navbar {
+  margin-bottom: 0;
 }

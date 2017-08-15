@@ -1,0 +1,26 @@
+extends ../layout/layout.pug
+
+block content
+  .container-fluid
+    .row
+      .col-sm-8.offset-sm-2
+        form(action="/users/" + user._id method="post")
+          div.text-center
+            h3 User Profile
+          div.row.form-group
+            label.col-form-label.col-sm-2(for="id") Twitter ID
+            input.form-control.col-sm-10(type="text" name="id" value=user.twitter.id readonly)
+          div.row.form-group
+            label.col-form-label.col-sm-2(for="username") Username
+            input.form-control.col-sm-10(type="text" name="username" value=user.twitter.username readonly)
+          div.row.form-group
+            label.col-form-label.col-sm-2(for="displayName") Name
+            input.form-control.col-sm-10(type="text" name="displayName" value=user.twitter.displayName)
+          div.row.form-group
+            label.col-form-label.col-sm-2(for="city") City
+            input.form-control.col-sm-10(type="text" name="city" value=user.city)
+          div.row.form-group
+            label.col-form-label.col-sm-2(for="state") State
+            input.form-control.col-sm-10(type="text" name="state" value=user.state)
+          div.text-center
+            button.btn.btn-primary(type="submit") Save

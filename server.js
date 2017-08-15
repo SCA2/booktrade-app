@@ -14,7 +14,7 @@ var methodOverride = require('method-override');
 require('dotenv').load();
 require('./app/config/passport')(passport);
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGODB_URI);
 mongoose.Promise = global.Promise;
 
 app.set('view engine', 'pug');
@@ -38,6 +38,7 @@ app.use(methodOverride('_method'));
 
 app.use((req, res, next) => {
   res.locals.isLoggedIn = req.isAuthenticated();
+  res.locals.user = req.user ? req.user : null
   next();
 });
 

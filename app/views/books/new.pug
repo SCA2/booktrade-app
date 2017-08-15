@@ -1,0 +1,29 @@
+extends ../layout/layout.pug
+
+block content
+  .container-fluid
+    .row
+      .col-sm-8.offset-sm-2
+        form(action="/books" method="post")
+          div.text-center
+            h3 Add this book to your library?
+          div.row.form-group
+            label.col-form-label.col-sm-2(for="title") Title
+            input.form-control.col-sm-10(type="text" name="title" value=book.title readonly)
+          div.row.form-group
+            label.col-form-label.col-sm-2(for="authors") Authors
+            input.form-control.col-sm-10(type="text" name="authors" value=book.authors readonly)
+          div.row.form-group
+            label.col-form-label.col-sm-2(for="publisher") Publisher
+            input.form-control.col-sm-10(type="text" name="publisher" value=book.publisher readonly)
+          div.row.form-group
+            label.col-form-label.col-sm-2(for="link") Link
+            input.form-control.col-sm-10(type="text" name="link" value=book.link readonly)
+          div.row.form-group
+            label.col-form-label.col-sm-2(for="thumbnail") Thumbnail
+            input.form-control.col-sm-10(type="text" name="thumbnail" value=book.thumbnail readonly)
+          div.row.form-group
+            label.col-form-label.col-sm-2(for="id") Google ID
+            input.form-control.col-sm-10(type="text" name="id" value=book.id readonly)
+          div.text-center
+            button.btn.btn-primary(type="submit") Create Book

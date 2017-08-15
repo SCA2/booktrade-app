@@ -1,29 +1,25 @@
-nav.navbar.navbar-default.container
-  .container-fluid
-    .navbar-header
-      button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")
-        span.sr-only Toggle navigation
-        span.icon-bar 
-        span.icon-bar 
-        span.icon-bar 
-      a.navbar-brand(href="/") FCC Voting App
-    .collapse.navbar-collapse#bs-example-navbar-collapse-1
-      ul.nav.navbar-nav
-        li.link
-          a(href='/api/polls') Polls
-        li.link
-          if isLoggedIn
-            a(href='/api/' + user_id + '/polls/new') New Poll
-      ul.nav.navbar-nav.navbar-right
-        li.link(style="margin-top: 7px")
-          p.navbar-btn
-            a.btn.twitter-share-button(href="https://twitter.com/share" data-show-count="false") Tweet
-        li
-          if isLoggedIn
-            a(href="/profile") Profile
-        li
-          if isLoggedIn
-            a(href="/logout") Logout
-          else
-            a(href="/auth/github") Login with GitHub
-script(async src="//platform.twitter.com/widgets.js" charset="utf-8")
+nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse.fixed-top
+  button.navbar-toggler.navbar-toggler-right(type="button" data-toggle="collapse" data-target="#navbar-collapse")
+    span.navbar-toggler-icon
+  a.navbar-brand(href="/") FCC Book Club
+  .navbar-collapse.collapse#navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item
+        a.nav-link(href='/books') All Books
+      if isLoggedIn
+        li.nav-item
+          a.nav-link(href='/users/' + user._id + '/books') My Books
+        li.nav-item
+          a.nav-link(href='/users/' + user._id + '/trades') My Trades
+    form.form-inline.my-2.my-lg-0(action=href='/search' method='post')
+      input.form-control.mr-sm-2(type="text" name="query" placeholder="Search")
+      button.btn.btn-outline-primary.my-2.my-sm-0(type="submit") Search
+    ul.navbar-nav.navbar-right
+      li.nav-item
+        if isLoggedIn
+          a.nav-link(href='/users/' + user._id) Profile
+      li.nav-item
+        if isLoggedIn
+          a.nav-link(href="/logout") Logout
+        else
+          a.nav-link(href="/auth/twitter") Login with Twitter

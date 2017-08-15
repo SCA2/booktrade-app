@@ -1,0 +1,51 @@
+extends ../layout/layout.pug
+
+block content
+  if booksUserWants.length > 0
+    section
+      .container
+        p
+          h5=`Books I Want (${booksUserWants.length})`
+        .row(style="display: flex; flex-wrap: wrap")
+          each book in booksUserWants
+            .col-sm-3
+              .card(style="min-height: 350px")
+                a(href='/books/' + book._id)
+                  img.card-img-top(src=book.thumbnail)
+                .card-block
+                  p.card-title=book.title
+                if book.request
+                  .card-footer.text-muted
+                    form(style="margin-bottom: 0" action='/books/' + book._id + '/request?_method=DELETE' method='post')
+                      .d-inline-flex.justify-content-between(style="width: 100%")
+                        div
+                          span="Cancel Request"
+                        button.ml-auto.close(type="submit" aria-label="Close")
+                          span(aria-hidden="true") &times;
+  if booksOthersWant.length > 0
+    section
+      .container
+        p
+          h5=`Books Others Want (${booksOthersWant.length})`
+        .row(style="display: flex; flex-wrap: wrap")
+          each book in booksOthersWant
+            .col-sm-3
+              .card(style="min-height: 350px")
+                a(href='/books/' + book._id)
+                  img.card-img-top(src=book.thumbnail)
+                .card-block
+                  p.card-title=book.title
+                if book.request
+                  .card-footer.text-muted
+                    form(style="margin-bottom: 0" action='/books/' + book._id + '/request?_method=PUT' method='post')
+                      .d-inline-flex.justify-content-between(style="width: 100%")
+                        div
+                          span="Grant Request"
+                        button.ml-auto.close(type="submit" aria-label="Close")
+                          span(aria-hidden="true") &times;
+                    form(style="margin-bottom: 0" action='/books/' + book._id + '/request?_method=PATCH' method='post')
+                      .d-inline-flex.justify-content-between(style="width: 100%")
+                        div
+                          span="Deny Request"
+                        button.ml-auto.close(type="submit" aria-label="Close")
+                          span(aria-hidden="true") &times;

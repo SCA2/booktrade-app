@@ -1,7 +1,7 @@
 {
-  "name": "voting-app",
+  "name": "booktrade-app",
   "version": "1.0.0",
-  "description": "FCC Voting App",
+  "description": "FCC Book Club App",
   "main": "server.js",
   "directories": {
     "test": "test"
@@ -18,7 +18,7 @@
     "method-override": "^2.3.9",
     "mongoose": "^4.10.4",
     "passport": "^0.3.2",
-    "passport-github": "^1.1.0",
+    "passport-twitter": "^1.0.4",
     "pug": "^2.0.0-rc.2",
     "pug-bootstrap": "0.0.15"
   },
@@ -34,12 +34,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SCA2/voting-app.git"
+    "url": "git+https://github.com/SCA2/booktrade-app.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SCA2/voting-app/issues"
+    "url": "https://github.com/SCA2/booktrade-app/issues"
   },
-  "homepage": "https://github.com/SCA2/voting-app#readme"
+  "homepage": "https://github.com/SCA2/booktrade-app#readme"
 }

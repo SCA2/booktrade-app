@@ -1,7 +1,7 @@
 'use strict';
 
 var path = process.cwd();
-var PollHandler = require(path + '/app/controllers/pollHandler.server.js');
+var BookHandler = require(path + '/app/controllers/bookHandler.server.js');
 
 module.exports = function (app, passport) {
 
@@ -13,60 +13,67 @@ module.exports = function (app, passport) {
     }
   }
 
-  var pollHandler = new PollHandler();
+  var bookHandler = new BookHandler();
 
   app.route('/')
     .get(function (req, res) {
-      res.redirect('/api/polls');
+      res.redirect('/books');
     });
 
   app.route('/login')
     .get(function (req, res) {
-      res.redirect('/auth/github');
+      res.redirect('/auth/twitter');
     });
 
   app.route('/logout')
     .get(function (req, res) {
       req.logout();
-      res.redirect('/api/polls');
+      res.redirect('/books');
     });
 
   app.route('/profile')
-    .get(isLoggedIn, function (req, res) {
-      res.render(path + '/app/views/users/profile.pug');
-    });
+    .get(function (req, res) {
+      res.redirect('/users/:user_id');
+    })
 
-  app.route('/auth/github/callback')
-    .get(passport.authenticate('github', {
+  app.route('/search')
+    .post(isLoggedIn, bookHandler.searchForBook);
+
+  app.route('/auth/twitter/callback')
+    .get(passport.authenticate('twitter', {
       successRedirect: '/',
       failureRedirect: '/login'
     }));
 
-  app.route('/auth/github')
-    .get(passport.authenticate('github'));
+  app.route('/auth/twitter')
+    .get(passport.authenticate('twitter'));
 
-  app.route('/api/polls')
-    .get(pollHandler.getPolls)
-    .post(isLoggedIn, pollHandler.createPoll);
+  app.route('/books')
+    .get(bookHandler.getBooks)
+    .post(isLoggedIn, bookHandler.createBook);
 
-  app.route('/api/polls/new')
-    .get(isLoggedIn, pollHandler.newPoll);
+  app.route('/books/:book_id')
+    .get(bookHandler.getBook)
+    .delete(isLoggedIn, bookHandler.deleteBook);
 
-  app.route('/api/polls/:poll_id')
-    .get(pollHandler.getPoll)
-    .put(isLoggedIn, pollHandler.updatePoll)
-    .delete(isLoggedIn, pollHandler.deletePoll);
+  app.route('/books/:book_id/request')
+    .post(isLoggedIn, bookHandler.createBookRequest)
+    .put(isLoggedIn, bookHandler.acceptBookRequest)
+    .patch(isLoggedIn, bookHandler.denyBookRequest)
+    .delete(isLoggedIn, bookHandler.cancelBookRequest);
 
-  app.route('/api/polls/:poll_id/options')
-    .post(isLoggedIn, pollHandler.createOption);
+  app.route('/users/:user_id')
+    .get(isLoggedIn, bookHandler.getUser)
+    .post(isLoggedIn, bookHandler.updateUser);
 
-  app.route('/api/polls/:poll_id/options/:option_id')
-    .get(pollHandler.getVote)
-    .put(pollHandler.addVote)
-    .delete(isLoggedIn, pollHandler.deleteOption);
+  app.route('/users/:user_id/books')
+    .get(isLoggedIn, bookHandler.getUserBooks)
+
+  app.route('/users/:user_id/trades')
+    .get(isLoggedIn, bookHandler.getUserTrades)
 
   app.route('/api/:id')
     .get(isLoggedIn, function (req, res) {
-      res.json(req.user.github);
+      res.json(req.user);
     });
 };

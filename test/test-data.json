@@ -1,0 +1,59 @@
+{
+  "kind": "books#volume",
+  "id": "a8LBjVImeO4C",
+  "etag": "C7QdiwJA/6Y",
+  "selfLink": "https://www.googleapis.com/books/v1/volumes/a8LBjVImeO4C",
+  "volumeInfo": {
+    "title": "The Plague",
+    "authors": [ "Albert Camus" ],
+    "publisher": "Vintage",
+    "publishedDate": "2012-08-08",
+    "description": "A haunting tale of human resilience in the face of unrelieved horror, Camus\" novel about a bubonic plague ravaging the people of a North African coastal town is a classic of twentieth-century literature.",
+    "industryIdentifiers": [ { "type": "OTHER", "identifier": "BL:A0019715423" } ],
+    "readingModes": { "text": true, "image": false },
+    "pageCount": 320,
+    "printType": "BOOK",
+    "categories": [ "Fiction" ],
+    "averageRating": 4,
+    "ratingsCount": 2,
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "2.10.5.0.preview.2",
+    "panelizationSummary": { "containsEpubBubbles": false, "containsImageBubbles": false },
+    "imageLinks": {
+      "smallThumbnail": "http://books.google.com/books/content?id=a8LBjVImeO4C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+      "thumbnail": "http://books.google.com/books/content?id=a8LBjVImeO4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.com/books?id=a8LBjVImeO4C&printsec=frontcover&dq=%22The+Plague,+Albert+Camus%22&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=a8LBjVImeO4C&source=gbs_api",
+    "canonicalVolumeLink": "https://market.android.com/details?id=book-a8LBjVImeO4C"
+  },
+  "saleInfo": {
+    "country": "US",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": { "amount": 10.99, "currencyCode": "USD" },
+    "retailPrice": { "amount": 10.99, "currencyCode": "USD" },
+    "buyLink": "https://play.google.com/store/books/details?id=a8LBjVImeO4C&rdid=book-a8LBjVImeO4C&rdot=1&source=gbs_api",
+    "offers": [ { "some": "offer" } ]
+  },
+  "accessInfo": {
+    "country": "US",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+    "epub": {
+      "isAvailable": true,
+      "acsTokenLink": "http://books.google.com/books/download/The_Plague-sample-epub.acsm?id=a8LBjVImeO4C&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+    },
+    "pdf": { "isAvailable": false },
+    "webReaderLink": "http://play.google.com/books/reader?id=a8LBjVImeO4C&hl=&as_pt=BOOKS&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+  },
+  "searchInfo": {
+    "textSnippet": "A haunting tale of human resilience in the face of unrelieved horror, Camus&#39; novel about a bubonic plague ravaging the people of a North African coastal town is a classic of twentieth-century literature."
+  }
+}

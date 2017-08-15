@@ -4,7 +4,7 @@
 
   var profileId = document.querySelector('#profile-id') || null;
   var profileUsername = document.querySelector('#profile-username') || null;
-  var profileRepos = document.querySelector('#profile-repos') || null;
+  var profileBooks = document.querySelector('#profile-books') || null;
   var displayName = document.querySelector('#display-name');
   var apiUrl = appUrl + '/api/:id';
 
@@ -14,23 +14,24 @@
 
   ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, function (data) {
     var userObject = JSON.parse(data);
+    console.log(userObject);
 
     if (userObject.displayName !== null) {
-      updateHtmlElement(userObject, displayName, 'displayName');
+      updateHtmlElement(userObject['twitter'], displayName, 'displayName');
     } else {
-      updateHtmlElement(userObject, displayName, 'username');
+      updateHtmlElement(userObject['twitter'], displayName, 'username');
     }
 
     if (profileId !== null) {
-      updateHtmlElement(userObject, profileId, 'id');   
+      updateHtmlElement(userObject['twitter'], profileId, 'id');   
     }
 
     if (profileUsername !== null) {
-      updateHtmlElement(userObject, profileUsername, 'username');   
+      updateHtmlElement(userObject['twitter'], profileUsername, 'username');   
     }
 
-    if (profileRepos !== null) {
-      updateHtmlElement(userObject, profileRepos, 'publicRepos');   
+    if (profileBooks !== null) {
+      updateHtmlElement(userObject, profileBooks, 'books');   
     }
 
   }));

@@ -1,0 +1,29 @@
+extends ../layout/layout.pug
+
+block content
+  .container
+    .row
+      .col-md-5.col-md-offset-1
+        dl.row
+          dt.col-sm-3 Title
+          dd.col-sm-9=book.title
+          dt.col-sm-3 Authors
+          dd.col-sm-9=book.authors
+          dt.col-sm-3 Publisher
+          dd.col-sm-9=book.publisher
+          dt.col-sm-3 Link
+          dd.col-sm-9=book.link
+      .col-md-5
+        img(src=book.thumbnail)
+      .col-md-12.text-center
+        p
+          if user && isOwnedBy
+            form(action='/books/' + book._id + '?_method=DELETE' method='post')
+              button.btn.btn-danger(type="submit") Delete
+          if user && isOwnedBy && book.request
+            form(action='/books/' + book._id + '?_method=PUT' method='post')
+              button.btn.btn-warning(type="submit") Accept Request
+          if user && !isOwnedBy && !book.request
+            form(action='/books/' + book._id + '/request' method='post')
+              input(type="hidden" name="requestor" value=user._id)
+              button.btn.btn-primary(type="submit") Request
